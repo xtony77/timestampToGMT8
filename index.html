@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="zh-Hant-TW" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+	<title>Unix timestamp時間戳記轉換GMT+8時間</title>
+	<script src="./jquery-1.11.0.min.js"></script>
+	<script src="./jquery-dateFormat/jquery-dateFormat.min.js"></script>
+</head>
+<body>
+	<h1>請輸入Unix timestamp時間戳記</h1>
+	<p><small>精準到秒數，例如: php time()</small></p>
+	<input type="text" id="timestamp" name="timestamp" value="">
+	<h2>轉換GMT+8時區：</h2>
+	<span id="trans-datetime"></span>
+	<script type="text/javascript">
+		$('#timestamp').keyup(function(){
+			var timezone_at = parseInt( $('#timestamp').val() );
+			var localtime = $.format.date( new Date( timezone_at * 1000 ), 'yyyy-MM-dd HH:mm:ss' );
+			$('#trans-datetime').html( localtime );
+		});
+	</script>
+</body>
+</html>
